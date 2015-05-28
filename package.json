@@ -1,0 +1,32 @@
+{
+  "name": "autocomplete_wallcrawler",
+  "version": "0.0.2",
+  "description": "create autosuggestions using the english dictionary",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/test.js",
+    "coverage": "./node_modules/.bin/istanbul cover test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wallcrawler/autocomplete.git"
+  },
+  "keywords": [
+    "autocomplete",
+    "english",
+    "dictionary",
+    "suggestions"
+  ],
+  "author": "wallcrawler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wallcrawler/autocomplete/issues"
+  },
+  "homepage": "https://github.com/wallcrawler/autocomplete",
+  "devDependencies": {
+    "istanbul": "^0.3.14"
+  }
+}
