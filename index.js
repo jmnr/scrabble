@@ -12,28 +12,28 @@ ac.import = function (callback) {
   });
 };
 
-ac.stats = function (word, callback) {
-  if (!ac.searches) {
-    ac.searches = {};
-  }
-  if (!ac.searches[word]) {
-    ac.searches[word] = [];
-  }
-  ac.searches[word].push(new Date().getTime());
-  callback(null, ac.searches);
-};
+// ac.stats = function (word, callback) {
+//   if (!ac.searches) {
+//     ac.searches = {};
+//   }
+//   if (!ac.searches[word]) {
+//     ac.searches[word] = [];
+//   }
+//   ac.searches[word].push(new Date().getTime());
+//   callback(null, ac.searches);
+// };
 
-ac.findWord = function (word, callback) {
-  // who wants to volunteer to implement the method?
-  var found = [];
-  for (var i = 0; i < ac.words.length; i++) {
-    if (ac.words[i].search(word) === 0) {
-      found.push(ac.words[i]);
-    }
-  }
-  console.log('found.length', found.length);
-  return callback(null, found);
-};
+// ac.findWord = function (word, callback) {
+//   // who wants to volunteer to implement the method?
+//   var found = [];
+//   for (var i = 0; i < ac.words.length; i++) {
+//     if (ac.words[i].search(word) === 0) {
+//       found.push(ac.words[i]);
+//     }
+//   }
+//   console.log('found.length', found.length);
+//   return callback(null, found);
+// };
 
 ac.numWords = function (num, scrab) { //will be hardcoded as 6 for time being
   // console.log('indexes', ac.words[7]);
