@@ -1,107 +1,268 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
-    <link rel="stylesheet" href="main.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Unscrabble</title>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="http://www.iconj.com/ico/5/6/56eooe718a.ico" type="image/x-icon"/>
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600" rel="stylesheet" type="text/css">
+
+    <style>
+
+      body {
+        min-height: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #004b34, #008269);
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      #main {
+        height: 70%;
+      }
+
+      #quint {
+        height: 30%;
+        bottom: 0;
+        position: fixed;
+      }
+
+      #main-head {
+        text-align: center;
+        height: 7em;
+        margin: 0 auto;
+        padding-top: 6em;
+        /*background-image: url('./images/background.png');*/
+      }
+
+      #main-head, #inputBoxes, #input-buttons {
+        text-align: center;
+        display: block;
+      }
+
+      #logo {
+        background-color: #f01930;
+        height: 6em;
+        width: 45em;
+        border-radius: 23px;
+        padding-top: 1em;
+        color: white;
+        border: 10px solid #8a1923;
+        margin: 0 auto;
+        opacity: .8;
+      }
+
+      h1 {
+        font-weight: 200;
+        font-size: 4em;
+        margin: 0;
+      }
+
+      .inputs {
+        display: inline-block;
+        height: 10em;
+        width: 10em;
+        background-color: #f2eba7;
+        border-radius: 13px;
+        border: none;
+        margin: 1em;
+        size: 15;
+        text-align: center;
+        font-size: 10px;
+
+      }
+
+      #inputBoxes {
+        margin-top: 4em;
+      }
+
+      button {
+        height: 1em;
+        width: 1em;
+        font-size: 300%;
+        background-color: Transparent;
+        color: #f2eba7;
+        border: none;
+      }
+
+      #input-buttons {
+        margin-top: 1em;
+        color: #f2eba7;
+      }
+
+      #navbar {
+        height: 3em;
+        weight: 1em;
+        background-color: black;
+        margin-top: 2em;
+      }
+
+      #results-box, #twitter-box{
+        height: 55em;
+        background-color: white;
+        width: 0 auto;
+        text-align: center;
+      }
+
+      h2 {
+        font-weight: 400;
+        font-size: 5em;
+      }
+
+      .search-results, .tweets {
+        /*float: left;*/
+        width: 0 auto;
+        display: inline-block;
+      }
+
+      #dictionary {
+        color: white;
+        display: inline-block;
+      }
+
+
+      #footer {
+        height: 3em;
+        weight: 1em;
+        background-color: black;
+        padding-top: 2em;
+      }
+
+      @media (max-width: 800px) {
+
+        #logo {
+          background-color: #f01930;
+          height: 6em;
+          width: 15em;
+          border-radius: 23px;
+          padding-top: 1em;
+          color: white;
+          border: 10px solid #8a1923;
+          margin: 0 auto;
+          opacity: .8;
+        }
+
+        #title-text{
+            font-weight: 400;
+            font-size: 2em;
+            margin-top: .5em;
+        }
+
+      }
+
+    </style>
   </head>
+
   <body>
 
     <div id="main-head">
 
-      <div id='logo-border'>
-        <div id="logo">
-          <h1 id="title-text">UNSCRABBLE</h1>
-        </div>
+    <div id="logo-border">
+      <div id="logo">
+        <h1 id="title-text">UNSCRABBLE</h1>
+      </div>
+    </div>
+
+    <div id="inputBoxes">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search1">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search2">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search3">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search4">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search5">
+      <input maxlength="1" size="1" type="text" class="inputs" id="search6">
+    </div>
+
+    <div id="input-buttons">
+      <button id="minus-button" class="pm-buttons" value="Minus">-</button>
+      <button id="plus-button" class="pm-buttons" value="Plus">+</button>
+    </div>
+
+    <div id ="navbar"></div>
+
+    <div id="results-box">
+
+      <div class="search-results">
+        <div id="results"></div>
       </div>
 
-      <div id='input-boxes'>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
-        <input type='text' class='letter-box'> </input>
+    </div>
+
+    <div id="dictionary">
+      <h2>Dictionary definition goes here</h2>
+    </div>
+
+    <div id="twitter-box">
+
+      <div class="tweets">
+        <h2>lllsaffbvdfab</h2>
+        <h2>lll</h2>
+        <h2>lll</h2>
+        <h2>lll</h2>
+        <h2>lll</h2>
       </div>
 
-      <div id="input-buttons">
-        <button id="add-input">+</button>
-        <button id="remove-input">-</button>
-      </div>
+    </div>
 
-      <div id ='navbar'></div>
+    <div id ="footer"></div>
 
+  </div>
 
-        <div id= 'results-box'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
+  <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
 
-          <div class='search-results'>
-            <h2>lllsaffbvdfab</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
+  <script>
+    var boxes;
+    $('#plus-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      if(boxes < 15) {
+        $("#inputBoxes").append(
+          '<input maxlength="1" size="1" type="text" class="inputs" id="search' + (boxes + 1) + '">'
+        )
+      }
+    });
 
-            <!-- <h2>lllsaffbvdfab</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2> -->
+    $('#minus-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      if(boxes > 2) {
+        $("#inputBoxes input:last-child").remove()
+        // console.log($("#inputBoxes input:last-child").val());
+      }
+    });
 
-          </div>
-        </div>
+    $('body').on('keyup','.inputs', function() {
+      boxes = $("#inputBoxes > input").length;
+      var arr = [];
+      var live = false;
+      for(var i = 1; i <= boxes; i++) {
+        var x = document.getElementById('search' + i).value;
+        if(x.length > 0) {
+          arr.push(x.toLowerCase());
+          live = true;
+        } else {
+          arr.push('_');
+        }
+      }
 
-        <div id='dictionary'>
-          <h2>Dictionary definition goes here</h2>
-        </div>
+      var scrab = arr.join('');
 
-        <div id= 'twitter-box'>
+      if (!live) {
+        $('#results').html("<p>Enter some letters!</p>");
+      } else {
+        $.get('/' + scrab, function handler(data) {
+          data = data.split(',');
+          var results = '';
+          for(var i = 0; i < data.length; i++) {
+            results += "<p> " + data[i] + "</p>";
+          }
+          $('#results').html(results);
+        });
+      }
+      //$('#results').html(new Date().getTime());
+    });
+  </script>
 
-          <div class='tweets'>
-            <h2>lllsaffbvdfab</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-
-            <!-- <h2>lllsaffbvdfab</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2>
-            <h2>lll</h2> -->
-
-          </div>
-        </div>
-
-      <div id ='footer'></div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div id="qunit"></div>
-    <div id="qunit-fixture"></div> -->
-    <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
-    <script>
-
-test('this is a strict test', function(){
-  ok(true===true);
-});
-
-    </script>
   </body>
 </html>
