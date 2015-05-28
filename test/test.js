@@ -27,11 +27,11 @@ console.log('# ac.stats tracks which words/string were searched for');
 ac.import(function () {
   ac.stats('awesome', function (err, stats) {
     // console.log(stats);
-    assert.equal(stats['awesome'].length, 1);
+    assert.equal(stats.awesome.length, 1);
     ac.stats('awesome', function (err, stats) {
       // console.log(stats);
-      assert.equal(stats['awesome'].length, 2);
-      console.log("ok " + testindex++ + " stats (search count) for awesome: ", stats['awesome'].length);
+      assert.equal(stats.awesome.length, 2);
+      console.log("ok " + testindex++ + " stats (search count) for awesome: ", stats.awesome.length);
     });
   });
 });

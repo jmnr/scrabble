@@ -10,7 +10,7 @@
     "test": "node test/test.js",
     "coverage": "istanbul cover test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "nocov": "node test/*.js",
-    "codeclimate": "CODECLIMATE_REPO_TOKEN=1c0b40358b6943d3ecd94d6254d5cd2ac5dfc51188b4019bfca83b9b8a3542e2 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=188e867a71e527904efe9e34fc0d57787442a2e39d7ebb02b0ec3616294bc2d3 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info",
     "jshint": "jshint -c .jshintrc --exclude-path .gitignore .",
     "start": "node server.js",
     "nodemon": "nodemon ./server.js"

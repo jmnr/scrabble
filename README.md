@@ -64,6 +64,6 @@ your code *before* anyone can commit (*unlinted*) code
 
 + [ ] Integrate *Another API*  - Search for Tweets based on the word the person looked up to give them context on how to use it
 
-+ [ ] hightlight the characters the person typed in the word suggestions
++ [ ] highlight the characters the person typed in the word suggestions
 
 + [ ] Search for a string of characters *anywhere* in the word!
