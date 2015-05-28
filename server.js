@@ -46,7 +46,7 @@ http.createServer(function handler(request, response) {
   if (url.length > 1) {
     var scrab = url.split('/')[1];
     var ok = ac.numWords(scrab.length, scrab).join(',');
-    if(ok.length === 0) {response.end("No results found!")}
+    if(ok.length === 0) {response.end("No results found!");}
     response.end(ok);
   } else {
     response.end('blank');
