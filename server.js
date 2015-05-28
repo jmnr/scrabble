@@ -1,6 +1,10 @@
 var http = require('http');
 var port = process.env.PORT || 3000;
 var ac = require('./index.js');
+ac.import(function(err, count) {
+  console.log("Imported " + count.length + " Scrabble words!");
+});
+// update
 var fs = require('fs');
 var index = fs.readFileSync(__dirname + '/index.html');
 var Twit = require('twit');
@@ -29,7 +33,7 @@ http.createServer(function handler(request, response) {
     });
 
     setTimeout(function() {
-      T.get('statuses/oembed', { id: global.tweetID}, function(err, data, response) {
+      T.get('statuses/oembed.json', {id: global.tweetID, hide_media: true, align: center, maxwidth: 250}, function(err, data, response) {
       global.tweetEmbed = data.html;
     });
     response.end(global.tweetEmbed);
@@ -39,6 +43,15 @@ http.createServer(function handler(request, response) {
 
   // ?hide_media=true&align=center
 
-}).listen(port);
+  if (url.length > 1) {
+    var scrab = url.split('/')[1];
+    var ok = ac.numWords(scrab.length, scrab).join(',');
+    if(ok.length === 0) {response.end("No results found!")}
+    response.end(ok);
+  } else {
+    response.end('blank');
+  }
+
+  }).listen(port);
 
 console.log('node http server listening on http://localhost:' + port);

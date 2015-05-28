@@ -62,7 +62,7 @@ your code *before* anyone can commit (*unlinted*) code
 
 + [ ] Deploy to Heroku
 
-+ [ ] Integrate *Another API*  - Search for Tweets based on the word the person looked up to give them context on how to use it
++ [x] Integrate - Search for Tweets based on the word the person looked up to give them context on how to use it
 
 + [ ] highlight the characters the person typed in the word suggestions
 

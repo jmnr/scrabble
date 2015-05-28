@@ -31,20 +31,32 @@ ac.findWord = function (word, callback) {
       found.push(ac.words[i]);
     }
   }
+  console.log('found.length', found.length);
   return callback(null, found);
 };
 
-// client.get('search/tweets.json', {q: 'orangutan'}, function(error, tweets, response){
-//     if(error) throw error;
-//     console.log(tweets.statuses[0].text);
-//   //  console.log(response);
-// });
+ac.numWords = function (num, scrab) { //will be hardcoded as 6 for time being
+  // console.log('indexes', ac.words[7]);
+  var words = ac.words.filter(function(x) {
+    return x.length === num;
+  });
+  return ac.match(words, scrab);
+};
 
-// client.get('statuses/oembed.json?hide_media=true&align=center&id=2535323587&url=http%3A%2F%2Ft.co%2F9CIt1rks5K', function(error,response){
-//     if(error) throw error;
-//     console.log(response);
-//     //document.getElementById('tweets').html = response;
-// });
+ac.match = function (words, scrab) { //takes words matching letter amount and matches individual letters
+  for(var i = 0; i < scrab.length; i++) {
+    if(scrab[i] !== "_") {
+      words = ac.indexes(words, scrab[i], i);
+    }
+  }//if theres a value in text box, pare down words using that letter
+  return words;
+};
 
+ac.indexes = function(arr, letter, index) {
+  // console.log('ac indexes', arr, letter, index);
+  return arr.filter(function(x) {
+    return x[index] === letter;
+  });
+};
 
 module.exports = ac;

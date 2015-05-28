@@ -1,7 +1,7 @@
 {
-  "name": "word-finder",
-  "version": "1.0.3",
-  "description": "find words in English dictionary with autosuggestion!",
+  "name": "autocomplete_wallcrawler",
+  "version": "0.0.2",
+  "description": "create autosuggestions using the english dictionary",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docdis/autocomplete.git"
+    "url": "https://github.com/wallcrawler/autocomplete.git"
   },
   "keywords": [
     "autocomplete",
@@ -25,12 +25,12 @@
     "dictionary",
     "suggestions"
   ],
-  "author": "@nelsonic <contact.nelsonic@gmail.com> (https://github.com/nelsonic)",
+  "author": "wallcrawler",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/docdis/autocomplete/issues"
+    "url": "https://github.com/wallcrawler/autocomplete/issues"
   },
-  "homepage": "https://github.com/docdis/autocomplete",
+  "homepage": "https://github.com/wallcrawler/autocomplete",
   "devDependencies": {
     "codeclimate-test-reporter": "0.0.4",
     "istanbul": "^0.3.14",
@@ -49,5 +49,6 @@
     "twitter": "^1.2.5",
     "jshint": "^2.7.0",
     "twitter-node-client": "^0.0.6"
+    "istanbul": "^0.3.14"
   }
 }
