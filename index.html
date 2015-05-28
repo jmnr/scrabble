@@ -3,11 +3,170 @@
   <head>
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <title>Unscrabble</title>
     <link rel="shortcut icon" href="http://www.iconj.com/ico/5/6/56eooe718a.ico" type="image/x-icon"/>
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600" rel="stylesheet" type="text/css">
+
+    <style>
+
+      body {
+        min-height: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #004b34, #008269);
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      #main {
+        height: 70%;
+      }
+
+      #quint {
+        height: 30%;
+        bottom: 0;
+        position: fixed;
+      }
+
+      #main-head {
+        text-align: center;
+        height: 7em;
+        margin: 0 auto;
+        padding-top: 6em;
+        /*background-image: url('./images/background.png');*/
+      }
+
+      #main-head, #inputBoxes, #input-buttons {
+        text-align: center;
+        display: block;
+      }
+
+      #logo {
+        background-color: #f01930;
+        height: 6em;
+        width: 45em;
+        border-radius: 23px;
+        padding-top: 1em;
+        color: white;
+        border: 10px solid #8a1923;
+        margin: 0 auto;
+        opacity: .8;
+      }
+
+      h1 {
+        font-weight: 200;
+        font-size: 4em;
+        margin: 0;
+      }
+
+      .inputs {
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        background-color: #f2eba7;
+        border-radius: 13px;
+        border: none;
+        margin: 10px;
+        size: 15;
+        text-align: center;
+        font-size: 50px;
+      }
+
+      #inputBoxes {
+        margin-top: 4em;
+      }
+
+      button {
+        height: 1em;
+        width: 1em;
+        font-size: 300%;
+        background-color: Transparent;
+        color: #f2eba7;
+        border: none;
+      }
+
+      #input-buttons {
+        margin-top: 1em;
+        color: #f2eba7;
+      }
+
+      #navbar {
+        height: 3em;
+        weight: 1em;
+        background-color: black;
+        margin-top: 2em;
+      }
+
+      #results-box, #twitter-box{
+        height: 55em;
+        background-color: white;
+        width: 0 auto;
+        text-align: center;
+      }
+
+      .search-results, .tweets {
+        /*float: left;*/
+        width: 0 auto;
+        display: inline-block;
+        font-weight: 400;
+        font-size: 5em;
+      }
+
+      #dictionary {
+        color: white;
+        display: inline-block;
+      }
+
+
+      #footer {
+        height: 3em;
+        weight: 1em;
+        background-color: black;
+        padding-top: 2em;
+      }
+
+      @media (max-width: 800px) {
+
+        #logo {
+          background-color: #f01930;
+          height: 6em;
+          width: 15em;
+          border-radius: 23px;
+          padding-top: 1em;
+          color: white;
+          border: 10px solid #8a1923;
+          margin: 0 auto;
+          opacity: .8;
+        }
+
+        #title-text{
+            font-weight: 400;
+            font-size: 2em;
+            margin-top: .5em;
+        }
+
+        .inputs {
+          display: inline-block;
+          height: 10em;
+          width: 10em;
+          background-color: #f2eba7;
+          border-radius: 13px;
+          border: none;
+          margin: 1em 15em;
+          size: 15;
+          text-align: center;
+          font-size: 10px;
+          font-weight: 400;
+          /*font-size: 5em;*/
+        }
+
+      }
+
+    </style>
   </head>
 
   <body>
@@ -64,160 +223,6 @@
 
   </div>
 
-  <style>
-
-    body {
-      min-height: 100%;
-      height: 100%;
-      background: linear-gradient(to right, #004b34, #008269);
-      border: none;
-      margin: 0;
-      padding: 0;
-      font-family: 'Source Sans Pro', sans-serif;
-    }
-
-    #main {
-      height: 70%;
-    }
-
-    #quint {
-      height: 30%;
-      bottom: 0;
-      position: fixed;
-    }
-
-    #main-head {
-      text-align: center;
-      height: 7em;
-      margin: 0 auto;
-      padding-top: 6em;
-      /*background-image: url('./images/background.png');*/
-    }
-
-    #main-head, #inputBoxes, #input-buttons {
-      text-align: center;
-      display: block;
-    }
-
-    #logo {
-      background-color: #f01930;
-      height: 6em;
-      width: 45em;
-      border-radius: 23px;
-      padding-top: 1em;
-      color: white;
-      border: 10px solid #8a1923;
-      margin: 0 auto;
-      opacity: .8;
-    }
-
-    h1 {
-      font-weight: 200;
-      font-size: 4em;
-      margin: 0;
-    }
-
-    .inputs {
-      display: inline-block;
-      height: 10em;
-      width: 10em;
-      border: 2px solid black;
-      background-color: white;
-      /*background-image: url("./images/tile.png");*/
-      background-repeat: no-repeat;
-      border: none;
-      margin: 1em;
-    }
-
-    #inputBoxes {
-      margin-top: 4em;
-    }
-
-    button {
-      height: 1em;
-      width: 1em;
-      font-size: 300%;
-      background-color: Transparent;
-      color: #f2eba7;
-      border: none;
-    }
-
-    #input-buttons {
-      margin-top: 1em;
-      color: #f2eba7;
-    }
-
-    #navbar {
-      height: 3em;
-      weight: 1em;
-      background-color: black;
-      margin-top: 2em;
-    }
-
-    #results-box, #twitter-box{
-      height: 55em;
-      background-color: white;
-      width: 0 auto;
-      text-align: center;
-    }
-
-    h2 {
-      font-weight: 400;
-      font-size: 5em;
-    }
-
-    .search-results, .tweets {
-      /*float: left;*/
-      width: 0 auto;
-      display: inline-block;
-    }
-
-    #dictionary {
-      color: white;
-      display: inline-block;
-    }
-
-
-    #footer {
-      height: 3em;
-      weight: 1em;
-      background-color: black;
-      padding-top: 2em;
-    }
-
-    @media (max-width: 800px) {
-
-      #logo {
-        background-color: #f01930;
-        height: 6em;
-        width: 15em;
-        border-radius: 23px;
-        padding-top: 1em;
-        color: white;
-        border: 10px solid #8a1923;
-        margin: 0 auto;
-        opacity: .8;
-      }
-
-      #title-text{
-          font-weight: 400;
-          font-size: 2em;
-          margin-top: .5em;
-      }
-
-      strong {
-        font-weight: bold;
-        font-color: red;
-      }
-
-    }
-
-  </style>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
-  <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
-
     <script>
     // twitter widjet js from twitter API dev website
         window.twttr = (function(d, s, id) {
@@ -238,6 +243,7 @@
       }(document, "script", "twitter-wjs"));
 
     </script>
+
     <script>
       function ajaxGetRequest (searchurl, callback){
         var request = new XMLHttpRequest();
@@ -259,13 +265,9 @@
         console.log(definition);
         return definition;
       }
-
     </script>
-      <div id="qunit"></div>
-      <div id="qunit-fixture"></div>
-      <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
 
-      <script>
+    <script>
       test ("check makeurl is working", function() {
       	var word = "computer";
       	var makeUrlTest = makeUrl(word);
@@ -294,8 +296,7 @@
           $('#tweets').html(tweetData);
         });
     })
-  )
-
+    )
     </script>
 
   <script>
