@@ -43,7 +43,7 @@ var scrab = 'd__';
 var arr = ['hat', 'dog', 'cat'];
 assert.equal(ac.match(arr, scrab), 'dog');
 
-console.log("# ac.indexes finds match to word")
+console.log("# ac.indexes finds match to word");
 var scrab = 'd__';
 var arr = ['hat', 'dog', 'cat'];
 assert.equal(ac.indexes(arr, 'd', 0), 'dog');
