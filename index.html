@@ -11,7 +11,6 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600" rel="stylesheet" type="text/css">
 
     <style>
-
       body {
         min-height: 100%;
         height: 100%;
@@ -80,14 +79,14 @@
         margin-top: 4em;
       }
 
-      button {
+      /*button {
         height: 1em;
         width: 1em;
         font-size: 300%;
         background-color: Transparent;
         color: #f2eba7;
         border: none;
-      }
+      }*/
 
       #input-buttons {
         margin-top: 1em;
@@ -106,6 +105,12 @@
         background-color: white;
         width: 0 auto;
         text-align: center;
+      }
+
+      .suggestions {
+        display: block;
+        font-size: 1em;
+        font-weight: 400;
       }
 
       .search-results, .tweets {
@@ -209,13 +214,13 @@
 
     <div id="twitter-box">
 
-      <div class="tweets">
-        <h2>lllsaffbvdfab</h2>
+      <!-- <div class="tweets"> -->
+        <!-- <h2>lllsaffbvdfab</h2>
         <h2>lll</h2>
         <h2>lll</h2>
         <h2>lll</h2>
-        <h2>lll</h2>
-      </div>
+        <h2>lll</h2> -->
+      <!-- </div> -->
 
     </div>
 
@@ -261,42 +266,52 @@
       }
       function displayResults (response) {
         var definition = JSON.parse(response)[0].text;
-        document.getElementById("response").innerHTML = definition;
+        document.getElementById("dictionary").innerHTML = definition;
         console.log(definition);
         return definition;
       }
     </script>
 
-    <script>
-      test ("check makeurl is working", function() {
-      	var word = "computer";
-      	var makeUrlTest = makeUrl(word);
-      	equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
-        "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
-      });
-      test ('check wordnik returns a definition and displays it in HTML', function(assert) {
-        var done = assert.async();
-        ajaxGetRequest(makeUrl("sky"), displayResults);
-        setTimeout(function() {
-          var responseDivContent = document.getElementById("response").innerHTML;
-          console.log(responseDivContent);
-          equal(responseDivContent, "The expanse of air over any given point on the earth; the upper atmosphere as seen from the earth's surface.");
-          done();
-        }, 1000);
-      });
-    </script>
+    <!-- // <script>
+    //   test ("check makeurl is working", function() {
+    //   	var word = "computer";
+    //   	var makeUrlTest = makeUrl(word);
+    //   	equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
+    //     "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
+    //   });
+    //   test ('check wordnik returns a definition and displays it in HTML', function(assert) {
+    //     var done = assert.async();
+    //     ajaxGetRequest(makeUrl("sky"), displayResults);
+    //     setTimeout(function() {
+    //       var responseDivContent = document.getElementById("response").innerHTML;
+    //       console.log(responseDivContent);
+    //       equal(responseDivContent, "The expanse of air over any given point on the earth; the upper atmosphere as seen from the earth's surface.");
+    //       done();
+    //     }, 1000);
+    //   });
+    // </script> -->
 
     <script>
-      $('#submit').on('click', (function(){
-      var word = $('#input').val();
-      ajaxGetRequest(makeUrl(word), displayResults);
-        $.get('/twitter/'+word, function handler(tweetData) {
-          // var repl = '<strong>' +word + '</strong>';
-          // tweetData = tweetData.replace(word,repl);
-          $('#tweets').html(tweetData);
-        });
-    })
-    )
+//
+//     $(".addproduct").click(function(){
+//   // Holds the product ID of the clicked element
+//   var productId = $(this).attr('class').replace('addproduct ', '');
+//
+//   addToCart(productId);
+// });
+
+
+    //   $(".suggestions").click(function(){
+    //   var word = $(this).html(); //tk
+    //   console.log(this, word);
+    //   // ajaxGetRequest(makeUrl(word), displayResults);
+    //   //   $.get('/twitter/'+word, function handler(tweetData) {
+    //   //     // var repl = '<strong>' +word + '</strong>';
+    //   //     // tweetData = tweetData.replace(word,repl);
+    //   //     $('.tweets').html(tweetData);
+    //   //   });
+    // })
+    // )
     </script>
 
   <script>
@@ -341,9 +356,19 @@
           data = data.split(',');
           var results = '';
           for(var i = 0; i < data.length; i++) {
-            results += "<p> " + data[i] + "</p>";
+            results += "<button class='suggestions'>" + data[i] + "</button>";
           }
           $('#results').html(results);
+          $(".suggestions").click(function(){
+          var word = $(this).html(); //tk
+          console.log(word);
+          ajaxGetRequest(makeUrl(word), displayResults);
+            $.get('/twitter/'+word, function handler(tweetData) {
+              // var repl = '<strong>' +word + '</strong>';
+              // tweetData = tweetData.replace(word,repl);
+              $('#twitter-box').html(tweetData);
+            });
+          })
         });
       }
       //$('#results').html(new Date().getTime());

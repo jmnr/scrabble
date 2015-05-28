@@ -30,18 +30,20 @@ http.createServer(function handler(request, response) {
     T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, response) {
       global.tweet = data.statuses[0].text;
       global.tweetID = data.statuses[0].id_str;
+      console.log(tweetID);
     });
 
     setTimeout(function() {
-      T.get('statuses/oembed.json', {id: global.tweetID, hide_media: true, align: center, maxwidth: 250}, function(err, data, response) {
+      T.get('statuses/oembed', {id: global.tweetID}, function(err, data, response) {
+      console.log(data);
       global.tweetEmbed = data.html;
     });
     response.end(global.tweetEmbed);
-  }, 1000);
+    }, 2000);
 
   }
 
-  // ?hide_media=true&align=center
+  // hide_media: true, align: center, maxwidth: 250
 
   if (url.length > 1) {
     var scrab = url.split('/')[1];
