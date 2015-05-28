@@ -10,7 +10,6 @@ var index = fs.readFileSync(__dirname + '/index.html');
 
 http.createServer(function handler(request, response) {
   var url = request.url;
-  console.log("request.url:", url);
   if (url.length === 1) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.end(index.toString());
@@ -18,9 +17,10 @@ http.createServer(function handler(request, response) {
   if (url.length > 1) { //if find is in the url
     var scrab = url.split('/')[1];
     var ok = ac.numWords(scrab.length, scrab).join(',');
+    if(ok.length === 0) {response.end("No results found!")}
     response.end(ok);
   } else {
-    response.end('hello Dan!');
+    response.end('blank');
   }
 }).listen(port);
 

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Autocomplete Word Lookup like a Boss!</title>
+
   </head>
+
   <body>
+
     <div id="main">
-      <h1>Search your words!</h1>
+
+      <h1>Crossword Destroyer!</h1>
+      <input id="plus-button" type="button" value="Plus">
+      <input id="minus-button" type="button" value="Minus">
+      <p></p>
       <div id="inputBoxes">
         <input maxlength="1" size="1" type="text" class="inputs" id="search1">
         <input maxlength="1" size="1" type="text" class="inputs" id="search2">
@@ -15,95 +23,83 @@
         <input maxlength="1" size="1" type="text" class="inputs" id="search5">
         <input maxlength="1" size="1" type="text" class="inputs" id="search6">
       </div>
-      <div id="results"> </div>
+
+      <div id="results"></div>
     </div>
 
-    <style>
-body {
-  min-height: 100%;
-  height: 100%
-}
-#main {
-  height: 30%;
-}
-#quint {
-  height: 70%;
-  bottom: 0;
-  position: fixed;
-}
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
-    <!-- <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
-    <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script> -->
+  <style>
 
-    <!-- <script>
-test('Search for words beginning with awes', function(assert){
-  var done = assert.async();
-  $.get('/find/awes', function handler(data) {
-    console.log(data);
-    var words = data.split(',');
-    assert.equal(words.length, 5, 'number of suggestions for awes is 5');
-  });
-});
-    </script> -->
+    body {
+      min-height: 100%;
+      height: 100%
+    }
 
-    <script type="text/javascript" src="index.js"></script>
+    #main {
+      height: 30%;
+    }
 
-<script>
-  $('.inputs').keyup(function(e) {
-    var arr = [];
-    var live = false;
-    for(var i = 1; i < 7; i++) {
-      var x = document.getElementById('search' + i).value;
-      if(x.length > 0) {
-        arr.push(x.toLowerCase());
-        live = true;
-      } else {
-        arr.push('_');
+    #quint {
+      height: 70%;
+      bottom: 0;
+      position: fixed;
+    }
+
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.18.0.css">
+  <script src="https://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+
+  <script>
+    var boxes;
+    $('#plus-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      if(boxes < 15) {
+        $("#inputBoxes").append(
+          '<input maxlength="1" size="1" type="text" class="inputs" id="search' + (boxes + 1) + '">'
+        )
       }
-    }
+    });
 
-    var scrab = arr.join('');
+    $('#minus-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      if(boxes > 2) {
+        $("#inputBoxes input:last-child").remove()
+        // console.log($("#inputBoxes input:last-child").val());
+      }
+    });
 
-    if (!live) {
-      $('#results').html("<p></p>");
-    } else {
-      $.get('/' + scrab, function handler(data) {
-        data = data.split(',');
-        console.log('results back -', data);
-        var results = '';
-        for(var i = 0; i < data.length; i++) {
-          results += "<p> " + data[i] + "</p>";
+    $('body').on('keyup','.inputs', function() {
+      boxes = $("#inputBoxes > input").length;
+      var arr = [];
+      var live = false;
+      for(var i = 1; i <= boxes; i++) {
+        var x = document.getElementById('search' + i).value;
+        if(x.length > 0) {
+          arr.push(x.toLowerCase());
+          live = true;
+        } else {
+          arr.push('_');
         }
-        $('#results').html(results);
-      });
-    }
+      }
 
-    // var inputs = document.getElementsByClassName('inputs').value;
-    // console.log(document.getElementById('search1').value);
+      var scrab = arr.join('');
 
-    // var word = $('#search1').val();
-    // if (word.length === 0) {
-    //   $('#results').html("<p></p>");
-    // }
-    // if (word.length > 0) {
-    //   $.get('/find/'+ word, function handler(data) {
-    //     // console.log(data);
-    //     var words = data.split(',');
-    //     var results = '';
-    //     for(var i = 0; i < words.length; i++) {
-    //       results += "<p> " + words[i] + "</p>";
-    //     }
-    //     $('#results').html(results);
-    //   });
-    // }
-
-    //$('#results').html(new Date().getTime());
-  })
-</script>
-
+      if (!live) {
+        $('#results').html("<p>Enter some letters!</p>");
+      } else {
+        $.get('/' + scrab, function handler(data) {
+          data = data.split(',');
+          var results = '';
+          for(var i = 0; i < data.length; i++) {
+            results += "<p> " + data[i] + "</p>";
+          }
+          $('#results').html(results);
+        });
+      }
+      //$('#results').html(new Date().getTime());
+    });
+  </script>
 
   </body>
 </html>
