@@ -34,6 +34,17 @@ ac.findWord = function (word, callback) {
   return callback(null, found);
 }
 
+// client.get('search/tweets.json', {q: 'orangutan'}, function(error, tweets, response){
+//     if(error) throw error;
+//     console.log(tweets.statuses[0].text);
+//   //  console.log(response);
+// });
+
+// client.get('statuses/oembed.json?hide_media=true&align=center&id=2535323587&url=http%3A%2F%2Ft.co%2F9CIt1rks5K', function(error,response){
+//     if(error) throw error;
+//     console.log(response);
+//     //document.getElementById('tweets').html = response;
+// });
 
 
 module.exports = ac;

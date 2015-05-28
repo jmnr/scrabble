@@ -8,13 +8,12 @@
   },
   "scripts": {
     "test": "node test/test.js",
-    "coverage": "./node_modules/.bin/istanbul cover test/test.js",
+    "coverage": "istanbul cover test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "nocov": "node test/*.js",
-    "coverage": "./node_modules/.bin/istanbul cover test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
     "codeclimate": "CODECLIMATE_REPO_TOKEN=1c0b40358b6943d3ecd94d6254d5cd2ac5dfc51188b4019bfca83b9b8a3542e2 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info",
     "jshint": "jshint -c .jshintrc --exclude-path .gitignore .",
     "start": "node server.js",
-    "nodemon": "./node_modules/.bin/nodemon ./server.js"
+    "nodemon": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",
@@ -35,15 +34,20 @@
   "devDependencies": {
     "codeclimate-test-reporter": "0.0.4",
     "istanbul": "^0.3.14",
-    "pre-commit": "1.0.7"
+    "pre-commit": "^1.0.7"
   },
   "pre-commit": [
     "jshint",
-    "coverage",
-    "codeclimate",
-    "lint"
+    "coverage"
   ],
   "engines": {
     "node": ">= 0.10"
+  },
+  "dependencies": {
+    "twit": "^1.1.20",
+    "pre-commit": "^1.0.7",
+    "twitter": "^1.2.5",
+    "jshint": "^2.7.0",
+    "twitter-node-client": "^0.0.6"
   }
 }

@@ -1,5 +1,9 @@
 #Scrabble Search
 
+* why
+* what
+* how
+
 Search for a word given random characters and their positions. Find out the meaning of the word as well as how to use it.
 
 [![Build Status](https://travis-ci.org/jmnr/scrabble.png?branch=master)](https://travis-ci.org/jmnr/scrabble)
@@ -7,7 +11,7 @@ Search for a word given random characters and their positions. Find out the mean
 [![Test Coverage](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/coverage.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/coverage)
 [![Dependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble)
 
-[![devDependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble.svg#info=devDependencies) 
+[![devDependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble.svg#info=devDependencies)
 
 ## Features
 
@@ -20,13 +24,13 @@ Search for a word given random characters and their positions. Find out the mean
 ### Autocomplete HTTP Server (API)
 
 + [ ] serve an html page with a ***search box***
-+ [ ] expose the `ac.findWords` method as an API endpoint /find/:word
++ [x] expose the `ac.findWords` method as an API endpoint /find/:word
 + [ ] display the ***definition*** of a word when the person clicks/taps (*or navigates using the keyboard arrows - for extra credits*!) to their desired word
 + [ ] display the ***history*** of words people have searched for
 
 
 ### Back end
-+ [ ] create an ***endpoint*** in server.js for the format: /define/:word which uses the ac module's findWords method to lookup word suggestions and returns an array of these suggestions as the http response
++ [x] create an ***endpoint*** in server.js for the format: /define/:word which uses the ac module's findWords method to lookup word suggestions and returns an array of these suggestions as the http response
 
 In your module (index.js)
 + [ ] write a ***test*** for a new method "**define**" which will return a `callback(err, definition)` when you call it in the following way: `ac.define(word, callaback)`
