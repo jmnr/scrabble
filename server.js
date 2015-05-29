@@ -8,6 +8,7 @@ ac.import(function(err, count) {
 var fs = require('fs');
 var index = fs.readFileSync(__dirname + '/index.html');
 var Twit = require('twit');
+var waitCount = 0;
 
 var T = new Twit({
     consumer_key: process.env.CONSUMER_KEY,
@@ -29,20 +30,27 @@ http.createServer(function handler(request, response) {
     var tweetEmbed = '';
     var tweet;
     var tweetID;
+    var tweetCount = 0;
 
-    T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, response) {
-      for (var i=0; i<1; i++) {
+    T.get('search/tweets', { q: searchTerm, count: 3}, function(err, data, response) {
+      for (var i = 0; i < 3; i++) {
         tweet = data.statuses[i].text;
         tweetID = data.statuses[i].id_str;
+        T.get('statuses/oembed', {id: tweetID, hide_media: true}, function(err, data, response) {
+          tweetEmbed += data.html;
+          tweetCount++;
+        });
       }
-      T.get('statuses/oembed', {id: tweetID, hide_media: true}, function(err, data, response) {
-        tweetEmbed += data.html;
-      });
     });
 
-    setTimeout(function() {
-      response.end(tweetEmbed);
-    }, 1000);
+    var wait = function () {
+      if(waitCount > 49) { response.end("No Tweets found!"); }
+      if(tweetCount > 2) { response.end(tweetEmbed); }
+      waitCount++;
+      setTimeout(wait, 100);
+    };
+
+    wait();
 
   }
 
