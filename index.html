@@ -104,10 +104,12 @@
         background-color: #eaeef1;
         /*border: 2px solid #191919;*/
         text-align: center;
+        margin: 0 auto;
         width: 0 auto;
       }
 
       .suggestions {
+        border: 2px solid grey;
         color: black;
         display: inline-block;
         font-size: 2em;
@@ -115,14 +117,23 @@
         margin: .5em;
       }
 
+      .suggestions:hover {
+        background-color: grey;
+        color: #eaeef1;
+      }
+
       #dictionary {
         background-color: #191919;
         color: white;
         display: inline-block;
+        font-size: 40px;
         height: auto;
-        padding: 15px 0 15px;
+        padding: 50px 50px 50px;
       }
 
+      #twitter-box {
+        padding: 50px 25% 50px 25%;
+      }
 
       #footer {
         background-color: #191919;
@@ -173,6 +184,15 @@
           width: 100px;
         }
 
+        #dictionary {
+          font-size: 30px;
+          padding: 20px 20px 20px;
+        }
+
+        #twitter-box {
+          padding: 20px 0 20px 0;
+        }
+
       }
 
     </style>
@@ -208,26 +228,13 @@
 
     <div id="results-box">
 
-        <div id="results"><h1>word content here</h1></div>
+        <div id="results"></div>
 
     </div>
 
-    <div id="dictionary">
-      <h1>dictionary div goes here</h1>
-    </div>
+    <div id="dictionary"></div>
 
-    <div id="twitter-box">
-      <h1>twitter div goes here</h1>
-
-      <!-- <div class="tweets"> -->
-        <!-- <h2>lllsaffbvdfab</h2>
-        <h2>lll</h2>
-        <h2>lll</h2>
-        <h2>lll</h2>
-        <h2>lll</h2> -->
-      <!-- </div> -->
-
-    </div>
+    <div id="twitter-box"></div>
 
     <div id ="footer"><p>&copy; <script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, JMNR Blog.</p></div>
 
@@ -269,7 +276,7 @@
       }
       function displayResults (response) {
         var definition = JSON.parse(response)[0].text;
-        document.getElementById("dictionary").innerHTML = definition;
+        document.getElementById("dictionary").innerHTML = '"' + definition + '"';
         console.log(definition);
         return definition;
       }
@@ -367,7 +374,7 @@
       var scrab = arr.join('');
 
       if (!live) {
-        $('#results').html("<p>Enter some letters!</p>");
+        $('#results').html("<button class='suggestions'>Enter some letters!</button>");
       } else {
         $.get('/words/' + scrab, function handler(data) {
           data = data.split(',');
