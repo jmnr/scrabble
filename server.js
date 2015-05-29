@@ -25,28 +25,25 @@ http.createServer(function handler(request, response) {
 
   if (url.indexOf('/twitter/') > -1) {
     var searchTerm = url.split('/')[2].toString();
-    console.log(searchTerm);
+    var tweetEmbed = '';
+    var tweetID;
+    T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, resp) {
+      // var j = 0;
 
-    T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, response) {
-      global.tweet = data.statuses[0].text;
-      global.tweetID = data.statuses[0].id_str;
-      console.log(tweetID);
+      // for (var i=0; i<3; i++) {
+        tweetID = data.statuses[0].id_str;
+        T.get('statuses/oembed', {id: tweetID, hide_media: true}, function(err, data, res) {
+          tweetEmbed = data.html;
+        });
+      // }
+      console.log("TWITTER", tweetEmbed);
     });
 
-    setTimeout(function() {
-      T.get('statuses/oembed', {id: global.tweetID}, function(err, data, response) {
-      console.log(data);
-      global.tweetEmbed = data.html;
-    });
-    response.end(global.tweetEmbed);
-    }, 2000);
-
+    response.end(tweetEmbed);
   }
 
-  // hide_media: true, align: center, maxwidth: 250
-
-  if (url.length > 1) {
-    var scrab = url.split('/')[1];
+  if (url.indexOf('/words/') > -1) {
+    var scrab = url.split('/')[2];
     var ok = ac.numWords(scrab.length, scrab).join(',');
     if(ok.length === 0) {response.end("No results found!");}
     response.end(ok);
@@ -54,6 +51,6 @@ http.createServer(function handler(request, response) {
     response.end('blank');
   }
 
-  }).listen(port);
+}).listen(port);
 
 console.log('node http server listening on http://localhost:' + port);

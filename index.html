@@ -184,14 +184,12 @@
       <input maxlength="1" size="1" type="text" class="inputs" id="search1">
       <input maxlength="1" size="1" type="text" class="inputs" id="search2">
       <input maxlength="1" size="1" type="text" class="inputs" id="search3">
-      <input maxlength="1" size="1" type="text" class="inputs" id="search4">
-      <input maxlength="1" size="1" type="text" class="inputs" id="search5">
-      <input maxlength="1" size="1" type="text" class="inputs" id="search6">
     </div>
 
     <div id="input-buttons">
       <button id="plus-button" class="pm-buttons" value="Plus">+</button>
       <button id="minus-button" class="pm-buttons" value="Minus">-</button>
+      <button id="clear-button" class="pm-buttons" value="Clear">x</button>
     </div>
 
     <div id ="navbar"></div>
@@ -268,9 +266,9 @@
 
     <!-- // <script>
     //   test ("check makeurl is working", function() {
-    //   	var word = "computer";
-    //   	var makeUrlTest = makeUrl(word);
-    //   	equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
+    //      var word = "computer";
+    //      var makeUrlTest = makeUrl(word);
+    //      equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
     //     "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
     //   });
     //   test ('check wordnik returns a definition and displays it in HTML', function(assert) {
@@ -327,6 +325,24 @@
       }
     });
 
+    $('#clear-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      for(var i = 1; i <= boxes; i++) {
+        $("#search" + i).val('');
+      }
+    });
+
+    $('body').on('click','.suggestions', function() {
+      var word = $(this).html();
+      ajaxGetRequest(makeUrl(word), displayResults);
+      $.get('/twitter/' + word, function (tweetData) {
+          console.log(typeof tweetData);
+          console.log(tweetData, "TWITTER RETURNED");
+          $('#twitter-box').html(tweetData);
+        // }, 1000);
+      });
+    })
+
     $('body').on('keyup','.inputs', function() {
       boxes = $("#inputBoxes > input").length;
       var arr = [];
@@ -346,23 +362,14 @@
       if (!live) {
         $('#results').html("<p>Enter some letters!</p>");
       } else {
-        $.get('/' + scrab, function handler(data) {
+        $.get('/words/' + scrab, function handler(data) {
           data = data.split(',');
           var results = '';
           for(var i = 0; i < data.length; i++) {
             results += "<button class='suggestions'>" + data[i] + "</button>";
+            //results += '<p><a href="#">' + data[i] + '</a></p>';
           }
           $('#results').html(results);
-          $(".suggestions").click(function(){
-          var word = $(this).html(); //tk
-          console.log(word);
-          ajaxGetRequest(makeUrl(word), displayResults);
-            $.get('/twitter/'+word, function handler(tweetData) {
-              // var repl = '<strong>' +word + '</strong>';
-              // tweetData = tweetData.replace(word,repl);
-              $('#twitter-box').html(tweetData);
-            });
-          })
         });
       }
       //$('#results').html(new Date().getTime());
