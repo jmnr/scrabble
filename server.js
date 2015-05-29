@@ -43,14 +43,9 @@ http.createServer(function handler(request, response) {
       }
     });
 
-    var wait = function () {
-      if(waitCount > 49) { response.end("No Tweets found!"); }
-      if(tweetCount > 2) { response.end(tweetEmbed); }
-      waitCount++;
-      setTimeout(wait, 100);
-    };
-
-    wait();
+    setTimeout(function() {
+      { response.end(tweetEmbed); }
+    }, 3000);
 
   }
 
