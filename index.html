@@ -321,7 +321,6 @@
       boxes = $("#inputBoxes > input").length;
       if(boxes > 2) {
         $("#inputBoxes input:last-child").remove()
-        // console.log($("#inputBoxes input:last-child").val());
       }
     });
 
@@ -336,10 +335,7 @@
       var word = $(this).html();
       ajaxGetRequest(makeUrl(word), displayResults);
       $.get('/twitter/' + word, function (tweetData) {
-          console.log(typeof tweetData);
-          console.log(tweetData, "TWITTER RETURNED");
-          $('#twitter-box').html(tweetData);
-        // }, 1000);
+        $('#twitter-box').html(tweetData);
       });
     })
 
@@ -367,7 +363,6 @@
           var results = '';
           for(var i = 0; i < data.length; i++) {
             results += "<button class='suggestions'>" + data[i] + "</button>";
-            //results += '<p><a href="#">' + data[i] + '</a></p>';
           }
           $('#results').html(results);
         });

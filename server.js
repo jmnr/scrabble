@@ -23,32 +23,34 @@ http.createServer(function handler(request, response) {
     response.end(index.toString());
   }
 
-  if (url.indexOf('/twitter/') > -1) {
+  else if (url.indexOf('/twitter/') > -1) {
     var searchTerm = url.split('/')[2].toString();
-    var tweetEmbed = '';
-    var tweetID;
-    T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, resp) {
-      // var j = 0;
 
-      // for (var i=0; i<3; i++) {
-        tweetID = data.statuses[0].id_str;
-        T.get('statuses/oembed', {id: tweetID, hide_media: true}, function(err, data, res) {
-          tweetEmbed = data.html;
-        });
-      // }
-      console.log("TWITTER", tweetEmbed);
+    var tweetEmbed = '';
+    var tweet;
+    var tweetID;
+
+    T.get('search/tweets', { q: searchTerm, count: 1}, function(err, data, response) {
+      for (var i=0; i<1; i++) {
+        tweet = data.statuses[i].text;
+        tweetID = data.statuses[i].id_str;
+      }
+      T.get('statuses/oembed', {id: tweetID, hide_media: true}, function(err, data, response) {
+        tweetEmbed += data.html;
+      });
     });
 
-    response.end(tweetEmbed);
+    setTimeout(function() {
+      response.end(tweetEmbed);
+    }, 1000);
+
   }
 
-  if (url.indexOf('/words/') > -1) {
+  else if (url.indexOf('/words/') > -1) {
     var scrab = url.split('/')[2];
     var ok = ac.numWords(scrab.length, scrab).join(',');
     if(ok.length === 0) {response.end("No results found!");}
     response.end(ok);
-  } else {
-    response.end('blank');
   }
 
 }).listen(port);
