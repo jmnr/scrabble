@@ -12,49 +12,19 @@
 
     <style>
 
+    /*Overall styles*/
+
       body {
         min-height: 100%;
         height: 100%;
-        background: linear-gradient(to right, #004b34, #008269);
+        background-color: #191919;
         border: none;
         margin: 0;
         padding: 0;
         font-family: 'Source Sans Pro', sans-serif;
-      }
-
-      #main {
-        height: 70%;
-      }
-
-      #quint {
-        height: 30%;
-        bottom: 0;
-        position: fixed;
-      }
-
-      #main-head {
         text-align: center;
         height: 7em;
         margin: 0 auto;
-        padding-top: 6em;
-        /*background-image: url('./images/background.png');*/
-      }
-
-      #main-head, #inputBoxes, #input-buttons {
-        text-align: center;
-        display: block;
-      }
-
-      #logo {
-        background-color: #f01930;
-        height: 6em;
-        width: 45em;
-        border-radius: 23px;
-        padding-top: 1em;
-        color: white;
-        border: 10px solid #8a1923;
-        margin: 0 auto;
-        opacity: .8;
       }
 
       h1 {
@@ -63,17 +33,46 @@
         margin: 0;
       }
 
-      .inputs {
-        display: inline-block;
-        height: 100px;
-        width: 100px;
-        background-color: #f2eba7;
-        border-radius: 13px;
-        border: none;
-        margin: 10px;
-        size: 15;
+      /*#quint {
+        height: 30%;
+        bottom: 0;
+        position: fixed;
+      }*/
+
+      /*Header area styles*/
+
+      #header-area {
+        background-attachment: fixed;
+        background-position: center center;
+        background-image: url("http://fc04.deviantart.net/fs4/i/2004/255/2/5/newspaper_wallpaper_by_minuitserenite.jpg");
+        background-size: cover;
+        padding-bottom: 50px;
+        padding-top: 100px;
+      }
+
+      #inputBoxes, #input-buttons {
         text-align: center;
+        display: block;
+      }
+
+      #logo {
+        background-color: #191919;
+        height: 6em;
+        width: 35em;
+        padding-top: 1em;
+        color: #eaeef1;
+        border: 10px solid black;
+        margin: 0 auto;
+      }
+
+      .inputs {
+        background-color: #eaeef1;
+        border: 2px solid black;
+        display: inline-block;
         font-size: 50px;
+        height: 100px;
+        text-align: center;
+        width: 100px;
       }
 
       #inputBoxes {
@@ -81,66 +80,74 @@
       }
 
       button {
-        height: 1em;
-        width: 1em;
+        /*height: 1em;*/
+        /*width: 1em;*/
         font-size: 300%;
-        background-color: Transparent;
-        color: #f2eba7;
+        background-color: transparent;
+        color: black;
         border: none;
       }
 
       #input-buttons {
-        margin-top: 1em;
         color: #f2eba7;
+        margin-top: 1em;
       }
 
-      #navbar {
-        height: 3em;
-        weight: 1em;
-        background-color: black;
-        margin-top: 2em;
+      #input-buttons >button:hover {
+        color: grey;
       }
+
+      /*Content div styles*/
 
       #results-box, #twitter-box{
-        height: 55em;
-        background-color: white;
-        width: 0 auto;
+        height: auto;
+        background-color: #eaeef1;
+        /*border: 2px solid #191919;*/
         text-align: center;
+        width: 0 auto;
       }
 
-      .search-results, .tweets {
-        /*float: left;*/
-        width: 0 auto;
+      .suggestions {
+        color: black;
         display: inline-block;
+        font-size: 2em;
         font-weight: 400;
-        font-size: 5em;
+        margin: .5em;
       }
 
       #dictionary {
+        background-color: #191919;
         color: white;
         display: inline-block;
+        height: auto;
+        padding: 15px 0 15px;
       }
 
 
       #footer {
+        background-color: #191919;
+        color: #eaeef1;
         height: 3em;
-        weight: 1em;
-        background-color: black;
         padding-top: 2em;
+        weight: 1em;
       }
+
+      /*Media queries*/
 
       @media (max-width: 800px) {
 
+        /** {
+          border: 5px dotted black;
+        }*/
+
         #logo {
-          background-color: #f01930;
-          height: 6em;
-          width: 15em;
-          border-radius: 23px;
-          padding-top: 1em;
           color: white;
-          border: 10px solid #8a1923;
+          background-color: #191919;
+          border: 10px solid black;
+          height: 6em;
+          padding-top: 1em;
           margin: 0 auto;
-          opacity: .8;
+          width: 15em;
         }
 
         #title-text{
@@ -149,33 +156,36 @@
             margin-top: .5em;
         }
 
-        .inputs {
-          display: inline-block;
-          height: 10em;
-          width: 10em;
-          background-color: #f2eba7;
-          border-radius: 13px;
-          border: none;
-          margin: 1em 15em;
-          size: 15;
+        #inputBoxes {
           text-align: center;
-          font-size: 10px;
+        }
+
+        .inputs {
+          background-color: #eaeef1;
+          border: 3px solid black;
+          display: block;
+          font-size: 50px;
           font-weight: 400;
-          /*font-size: 5em;*/
+          height: 100px;
+          /*border-radius: 13px;*/
+          margin: 0 50% 0 50%;
+          text-align: center;
+          width: 100px;
         }
 
       }
 
     </style>
+
   </head>
 
   <body>
 
-    <div id="main-head">
+    <div id="header-area">
 
     <div id="logo-border">
       <div id="logo">
-        <h1 id="title-text">UNSCRABBLE</h1>
+        <h1 id="title-text">CR_SSW_RD</h1>
       </div>
     </div>
 
@@ -191,37 +201,35 @@
     <div id="input-buttons">
       <button id="plus-button" class="pm-buttons" value="Plus">+</button>
       <button id="minus-button" class="pm-buttons" value="Minus">-</button>
+      <button id="clear-button" class="pm-buttons" value="Clear">x</button>
     </div>
 
-    <div id ="navbar"></div>
+    </div>
 
     <div id="results-box">
 
-      <div class="search-results">
-        <div id="results"></div>
-      </div>
+        <div id="results"><h1>word content here</h1></div>
 
     </div>
 
     <div id="dictionary">
-      <h2>Dictionary definition goes here</h2>
+      <h1>dictionary div goes here</h1>
     </div>
 
     <div id="twitter-box">
+      <h1>twitter div goes here</h1>
 
-      <div class="tweets">
-        <h2>lllsaffbvdfab</h2>
+      <!-- <div class="tweets"> -->
+        <!-- <h2>lllsaffbvdfab</h2>
         <h2>lll</h2>
         <h2>lll</h2>
         <h2>lll</h2>
-        <h2>lll</h2>
-      </div>
+        <h2>lll</h2> -->
+      <!-- </div> -->
 
     </div>
 
-    <div id ="footer"></div>
-
-  </div>
+    <div id ="footer"><p>&copy; <script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, JMNR Blog.</p></div>
 
     <script>
     // twitter widjet js from twitter API dev website
@@ -261,42 +269,52 @@
       }
       function displayResults (response) {
         var definition = JSON.parse(response)[0].text;
-        document.getElementById("response").innerHTML = definition;
+        document.getElementById("dictionary").innerHTML = definition;
         console.log(definition);
         return definition;
       }
     </script>
 
-    <script>
-      test ("check makeurl is working", function() {
-      	var word = "computer";
-      	var makeUrlTest = makeUrl(word);
-      	equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
-        "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
-      });
-      test ('check wordnik returns a definition and displays it in HTML', function(assert) {
-        var done = assert.async();
-        ajaxGetRequest(makeUrl("sky"), displayResults);
-        setTimeout(function() {
-          var responseDivContent = document.getElementById("response").innerHTML;
-          console.log(responseDivContent);
-          equal(responseDivContent, "The expanse of air over any given point on the earth; the upper atmosphere as seen from the earth's surface.");
-          done();
-        }, 1000);
-      });
-    </script>
+    <!-- // <script>
+    //   test ("check makeurl is working", function() {
+    //      var word = "computer";
+    //      var makeUrlTest = makeUrl(word);
+    //      equal(makeUrlTest, 'http://api.wordnik.com/v4/word.json/' + word +
+    //     "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
+    //   });
+    //   test ('check wordnik returns a definition and displays it in HTML', function(assert) {
+    //     var done = assert.async();
+    //     ajaxGetRequest(makeUrl("sky"), displayResults);
+    //     setTimeout(function() {
+    //       var responseDivContent = document.getElementById("response").innerHTML;
+    //       console.log(responseDivContent);
+    //       equal(responseDivContent, "The expanse of air over any given point on the earth; the upper atmosphere as seen from the earth's surface.");
+    //       done();
+    //     }, 1000);
+    //   });
+    // </script> -->
 
     <script>
-      $('#submit').on('click', (function(){
-      var word = $('#input').val();
-      ajaxGetRequest(makeUrl(word), displayResults);
-        $.get('/twitter/'+word, function handler(tweetData) {
-          // var repl = '<strong>' +word + '</strong>';
-          // tweetData = tweetData.replace(word,repl);
-          $('#tweets').html(tweetData);
-        });
-    })
-    )
+//
+//     $(".addproduct").click(function(){
+//   // Holds the product ID of the clicked element
+//   var productId = $(this).attr('class').replace('addproduct ', '');
+//
+//   addToCart(productId);
+// });
+
+
+    //   $(".suggestions").click(function(){
+    //   var word = $(this).html(); //tk
+    //   console.log(this, word);
+    //   // ajaxGetRequest(makeUrl(word), displayResults);
+    //   //   $.get('/twitter/'+word, function handler(tweetData) {
+    //   //     // var repl = '<strong>' +word + '</strong>';
+    //   //     // tweetData = tweetData.replace(word,repl);
+    //   //     $('.tweets').html(tweetData);
+    //   //   });
+    // })
+    // )
     </script>
 
   <script>
@@ -314,9 +332,23 @@
       boxes = $("#inputBoxes > input").length;
       if(boxes > 2) {
         $("#inputBoxes input:last-child").remove()
-        // console.log($("#inputBoxes input:last-child").val());
       }
     });
+
+    $('#clear-button').click(function() {
+      boxes = $("#inputBoxes > input").length;
+      for(var i = 1; i <= boxes; i++) {
+        $("#search" + i).val('');
+      }
+    });
+
+    $('body').on('click','.suggestions', function() {
+      var word = $(this).html();
+      ajaxGetRequest(makeUrl(word), displayResults);
+      $.get('/twitter/' + word, function (tweetData) {
+        $('#twitter-box').html(tweetData);
+      });
+    })
 
     $('body').on('keyup','.inputs', function() {
       boxes = $("#inputBoxes > input").length;
@@ -337,11 +369,11 @@
       if (!live) {
         $('#results').html("<p>Enter some letters!</p>");
       } else {
-        $.get('/' + scrab, function handler(data) {
+        $.get('/words/' + scrab, function handler(data) {
           data = data.split(',');
           var results = '';
           for(var i = 0; i < data.length; i++) {
-            results += "<p> " + data[i] + "</p>";
+            results += "<button class='suggestions'>" + data[i] + "</button>";
           }
           $('#results').html(results);
         });
