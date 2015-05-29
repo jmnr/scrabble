@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+# autocomplete - Node JS Week
+
+## Features
+* [x] import a list of words into an array called words
+* [x] search through list of words for a string and return a list of suggestions
+* [x] record a string that was searched for (for stats and graphs)
+=======
 #Scrabble Search
 
 * why
@@ -66,3 +74,4 @@ your code *before* anyone can commit (*unlinted*) code
 + [ ] highlight the characters the person typed in the word suggestions
 
 + [ ] Search for a string of characters *anywhere* in the word!
+>>>>>>> master
