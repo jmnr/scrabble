@@ -93,19 +93,30 @@
         margin-top: 1em;
       }
 
-      #input-buttons >button:hover {
+      #input-buttons > button:hover {
         color: grey;
+        cursor: pointer;
+        cursor: hand;
       }
 
       /*Content div styles*/
 
-      #results-box, #twitter-box{
+      #results-box {
         height: auto;
         background-color: #eaeef1;
         /*border: 2px solid #191919;*/
         text-align: center;
         margin: 0 auto;
         width: 0 auto;
+      }
+
+      #enterPrompt {
+        border: 2px solid grey;
+        color: black;
+        display: inline-block;
+        font-size: 2em;
+        font-weight: 400;
+        margin: .5em;
       }
 
       .suggestions {
@@ -120,6 +131,8 @@
       .suggestions:hover {
         background-color: grey;
         color: #eaeef1;
+        cursor: pointer;
+        cursor: hand;
       }
 
       #dictionary {
@@ -133,6 +146,15 @@
 
       #twitter-box {
         padding: 50px 25% 50px 25%;
+        height: auto;
+        background-color: #eaeef1;
+        /*border: 2px solid #191919;*/
+        /*margin: 0 auto;
+        width: 0 auto;*/
+      }
+
+      .EmbeddedTweet-tweet {
+        text-align: center;
       }
 
       #footer {
@@ -171,19 +193,6 @@
           text-align: center;
         }
 
-        .inputs {
-          background-color: #eaeef1;
-          border: 3px solid black;
-          display: block;
-          font-size: 50px;
-          font-weight: 400;
-          height: 100px;
-          /*border-radius: 13px;*/
-          margin: 0 50% 0 50%;
-          text-align: center;
-          width: 100px;
-        }
-
         #dictionary {
           font-size: 30px;
           padding: 20px 20px 20px;
@@ -193,8 +202,27 @@
           padding: 20px 0 20px 0;
         }
 
-      }
+        .inputs {
+    background-color: #eaeef1;
+    border: 3px solid black;
+    display: block;
+    font-size: 50px;
+    font-weight: 400;
+    height: 100px;
+    /*border-radius: 13px;*/
+    margin: 0 43% 0 43%;
+    text-align: center;
+    width: 100px;
+  }
 
+}
+
+@media (max-width: 500px) {
+
+  .inputs {
+    margin: 0 38% 0 38%;
+  }
+}
     </style>
 
   </head>
@@ -228,7 +256,9 @@
 
     <div id="results-box">
 
-        <div id="results"></div>
+        <div id="results">
+          <button id="enterPrompt">Enter some letters!</button>
+        </div>
 
     </div>
 
@@ -275,7 +305,7 @@
         "/definitions?limit=1&includeRelated=false&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
       }
       function displayResults (response) {
-        var definition = JSON.parse(response)[0].text;
+        var definition = JSON.parse(response)[0] !== undefined ? JSON.parse(response)[0].text : "No definition found!"
         document.getElementById("dictionary").innerHTML = '"' + definition + '"';
         console.log(definition);
         return definition;
@@ -326,6 +356,7 @@
 
   <script>
     var boxes;
+
     $('#plus-button').click(function() {
       boxes = $("#inputBoxes > input").length;
       if(boxes < 15) {
@@ -374,7 +405,7 @@
       var scrab = arr.join('');
 
       if (!live) {
-        $('#results').html("<button class='suggestions'>Enter some letters!</button>");
+        $('#results').html("<button id='enterPrompt'>Enter some letters!</button>");
       } else {
         $.get('/words/' + scrab, function handler(data) {
           data = data.split(',');
@@ -387,6 +418,7 @@
       }
       //$('#results').html(new Date().getTime());
     });
+
   </script>
 
   </body>
