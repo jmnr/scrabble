@@ -2,13 +2,13 @@
 
 This is an autocomplete app for people who solve crossword puzzles. Enter letters at specific positions and get all the words in the dictionary with letters at those positions.
 
+[Click Here](https://uncrossword.herokuapp.com/) to use the app.
+
 [![Build Status](https://travis-ci.org/jmnr/scrabble.png?branch=master)](https://travis-ci.org/jmnr/scrabble)
 [![Code Climate](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/gpa.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/feed)
 [![Test Coverage](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/coverage.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/coverage)
 [![Dependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble)
 [![devDependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble.svg#info=devDependencies)
-
-##[Click Here](https://uncrossword.herokuapp.com/) to see the app live.
 
 ## How we built it
 
