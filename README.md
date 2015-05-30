@@ -1,4 +1,4 @@
-#Crossword Solver
+#Uncrossword
 
 This is an autocomplete app for people who solve crossword puzzles. Enter letters at specific positions and get all the words in the dictionary with letters at those positions.
 
@@ -8,34 +8,7 @@ This is an autocomplete app for people who solve crossword puzzles. Enter letter
 [![Dependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble)
 [![devDependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble.svg#info=devDependencies)
 
-##How to get it running
-
-You will need to have a basic understanding of hwo to use git, your terminal and you will need nodejs and nodemon installed to get this working.
-
-#### 1. Clone the repo
-
-```sh
-git clone https://github.com/jmnr/scrabble.git
-```
-
-#### 2. Install the node.js dependencies:
-
-```sh
-npm install
-```
-
-#### 3. Run the (*module*) Tests:
-
-```sh
-npm test
-```
-
-#### 4. Run the Server with [Nodemon](https://github.com/remy/nodemon):
-
-```sh
-npm run nodemon
-```
-#### 5. Go to localhost:3000 in your browser.
+##[Click Here](https://uncrossword.herokuapp.com/) to see the app live.
 
 ## How we built it
 
@@ -72,4 +45,4 @@ your code *before* anyone can commit (*unlinted*) code
   + [x] add .**travis.yml** to your repo
   + [x] add "***build passing***" badge to your readme
 + [x] Add **Dependencies Badge** to your readme.
-+ [ ] Deploy to Heroku.
++ [x] Deploy to Heroku.
