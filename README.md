@@ -2,6 +2,8 @@
 
 This is an autocomplete app for people who solve crossword puzzles. Enter letters at specific positions and get all the words in the dictionary with letters at those positions.
 
+This project was completed as part of the Founders and Coders Javascript bootcamp along with @Ronan_Mccabe, @MsMichelleGellar, and @JoshuaPitzalis.
+
 [![Build Status](https://travis-ci.org/jmnr/scrabble.png?branch=master)](https://travis-ci.org/jmnr/scrabble)
 [![Code Climate](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/gpa.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/feed)
 [![Test Coverage](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/coverage.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/coverage)
@@ -72,4 +74,4 @@ your code *before* anyone can commit (*unlinted*) code
   + [x] add .**travis.yml** to your repo
   + [x] add "***build passing***" badge to your readme
 + [x] Add **Dependencies Badge** to your readme.
-+ [ ] Deploy to Heroku.
++ [x] Deploy to Heroku.

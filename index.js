@@ -43,6 +43,9 @@ ac.numWords = function (num, scrab) { //will be hardcoded as 6 for time being
   return ac.match(words, scrab);
 };
 
+//filters the total word list for words of the correct length
+
+
 ac.match = function (words, scrab) { //takes words matching letter amount and matches individual letters
   for(var i = 0; i < scrab.length; i++) {
     if(scrab[i] !== "_") {
@@ -52,6 +55,10 @@ ac.match = function (words, scrab) { //takes words matching letter amount and ma
   return words;
 };
 
+//taking each element of the string entered by the user
+//and narrow down the list of words which have the matching letter at that index
+
+
 ac.indexes = function(arr, letter, index) {
   // console.log('ac indexes', arr, letter, index);
   return arr.filter(function(x) {
@@ -59,4 +66,6 @@ ac.indexes = function(arr, letter, index) {
   });
 };
 
+
+//filter the word list to find the words that match at each index
 module.exports = ac;
