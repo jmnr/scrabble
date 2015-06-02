@@ -1,43 +1,14 @@
-#Crossword Solver
+#Uncrossword
 
 This is an autocomplete app for people who solve crossword puzzles. Enter letters at specific positions and get all the words in the dictionary with letters at those positions.
 
-This project was completed as part of the Founders and Coders Javascript bootcamp along with @Ronan_Mccabe, @MsMichelleGellar, and @JoshuaPitzalis.
+[Click Here](https://uncrossword.herokuapp.com/) to use the app.
 
 [![Build Status](https://travis-ci.org/jmnr/scrabble.png?branch=master)](https://travis-ci.org/jmnr/scrabble)
 [![Code Climate](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/gpa.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/feed)
 [![Test Coverage](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/badges/063396e0507dff112f33/coverage.svg)](https://codeclimate.com/repos/5565ab08e30ba00ffb008e17/coverage)
 [![Dependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble)
 [![devDependency Status](https://david-dm.org/jmnr/scrabble.svg)](https://david-dm.org/jmnr/scrabble.svg#info=devDependencies)
-
-##How to get it running
-
-You will need to have a basic understanding of hwo to use git, your terminal and you will need nodejs and nodemon installed to get this working.
-
-#### 1. Clone the repo
-
-```sh
-git clone https://github.com/jmnr/scrabble.git
-```
-
-#### 2. Install the node.js dependencies:
-
-```sh
-npm install
-```
-
-#### 3. Run the (*module*) Tests:
-
-```sh
-npm test
-```
-
-#### 4. Run the Server with [Nodemon](https://github.com/remy/nodemon):
-
-```sh
-npm run nodemon
-```
-#### 5. Go to localhost:3000 in your browser.
 
 ## How we built it
 
